@@ -1,0 +1,73 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Entities\Activity.cs" />
+    <Compile Remove="Entities\ActivityCategory.cs" />
+    <Compile Remove="Entities\ActivityFamily.cs" />
+    <Compile Remove="Entities\ActivityStat.cs" />
+    <Compile Remove="Entities\Branch.cs" />
+    <Compile Remove="Entities\BranchScheduling.cs" />
+    <Compile Remove="Entities\CreditCardInfo.cs" />
+    <Compile Remove="Entities\Device.cs" />
+    <Compile Remove="Entities\Event.cs" />
+    <Compile Remove="Entities\EventCollection.cs" />
+    <Compile Remove="Entities\EventCollectionDevice.cs" />
+    <Compile Remove="Entities\EventCollectionTeam.cs" />
+    <Compile Remove="Entities\EventLog.cs" />
+    <Compile Remove="Entities\EventStatus.cs" />
+    <Compile Remove="Entities\EventTeam.cs" />
+    <Compile Remove="Entities\EventTeamMemberStatResult.cs" />
+    <Compile Remove="Entities\EventType.cs" />
+    <Compile Remove="Entities\Follow.cs" />
+    <Compile Remove="Entities\Media.cs" />
+    <Compile Remove="Entities\PlayerInterestActivity.cs" />
+    <Compile Remove="Entities\Position.cs" />
+    <Compile Remove="Entities\Stat.cs" />
+    <Compile Remove="Entities\StatType.cs" />
+    <Compile Remove="Entities\SubstitutePlayer.cs" />
+    <Compile Remove="Entities\Team.cs" />
+    <Compile Remove="Entities\TeamActivity - Copy.cs" />
+    <Compile Remove="Entities\TeamActivity.cs" />
+    <Compile Remove="Entities\TeamMember - Copy.cs" />
+    <Compile Remove="Entities\TeamMember.cs" />
+    <Compile Remove="Entities\TeamMemberRole - Copy.cs" />
+    <Compile Remove="Entities\TeamMemberRole.cs" />
+    <Compile Remove="Entities\TeamType - Copy.cs" />
+    <Compile Remove="Entities\TeamType.cs" />
+    <Compile Remove="Entities\Tournament - Copy.cs" />
+    <Compile Remove="Entities\Tournament.cs" />
+    <Compile Remove="Entities\TournamentEventCollection - Copy.cs" />
+    <Compile Remove="Entities\TournamentEventCollection.cs" />
+    <Compile Remove="Entities\TournamentResult - Copy.cs" />
+    <Compile Remove="Entities\TournamentResult.cs" />
+    <Compile Remove="Entities\TournamentStatkeeper - Copy.cs" />
+    <Compile Remove="Entities\TournamentStatkeeper.cs" />
+    <Compile Remove="Entities\TournamentTeam - Copy.cs" />
+    <Compile Remove="Entities\TournamentTeam.cs" />
+    <Compile Remove="Entities\TournamentType - Copy.cs" />
+    <Compile Remove="Entities\TournamentType.cs" />
+    <Compile Remove="Entities\TournamentVenue - Copy.cs" />
+    <Compile Remove="Entities\TournamentVenue.cs" />
+    <Compile Remove="Entities\UserBusinessPackage - Copy.cs" />
+    <Compile Remove="Entities\UserBusinessPackage.cs" />
+    <Compile Remove="Entities\UserDeviceInfo - Copy.cs" />
+    <Compile Remove="Entities\Venue.cs" />
+    <Compile Remove="Entities\VenueActivity.cs" />
+    <Compile Remove="Entities\VenuesStatskeeper.cs" />
+    <Compile Remove="Entities\WaitingList.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Enhanced.ErrorOr" Version="1.2.1" />
+    <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.0" />
+  </ItemGroup>
+
+</Project>

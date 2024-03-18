@@ -1,0 +1,154 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Contracts\Activity\**" />
+    <Compile Remove="Contracts\Branches\**" />
+    <Compile Remove="Contracts\Event\**" />
+    <Compile Remove="Contracts\Images\**" />
+    <Compile Remove="Contracts\NotificationTo\**" />
+    <Compile Remove="Contracts\Notification\**" />
+    <Compile Remove="Contracts\Statkeeper\**" />
+    <Compile Remove="Contracts\Team\**" />
+    <Compile Remove="Contracts\Tournament\**" />
+    <Compile Remove="Contracts\UserInterestActivity\**" />
+    <Compile Remove="Contracts\Venue\**" />
+    <Compile Remove="Response\Activity\**" />
+    <Compile Remove="Response\Branch\**" />
+    <Compile Remove="Response\BusinessPackage\**" />
+    <Compile Remove="Response\CreditCard\**" />
+    <Compile Remove="Response\Device\**" />
+    <Compile Remove="Response\Event\**" />
+    <Compile Remove="Response\Image\**" />
+    <Compile Remove="Response\Notification\**" />
+    <Compile Remove="Response\Other\**" />
+    <Compile Remove="Response\Team\**" />
+    <Compile Remove="Response\Tournament\**" />
+    <Compile Remove="Response\Venue\**" />
+    <EmbeddedResource Remove="Contracts\Activity\**" />
+    <EmbeddedResource Remove="Contracts\Branches\**" />
+    <EmbeddedResource Remove="Contracts\Event\**" />
+    <EmbeddedResource Remove="Contracts\Images\**" />
+    <EmbeddedResource Remove="Contracts\NotificationTo\**" />
+    <EmbeddedResource Remove="Contracts\Notification\**" />
+    <EmbeddedResource Remove="Contracts\Statkeeper\**" />
+    <EmbeddedResource Remove="Contracts\Team\**" />
+    <EmbeddedResource Remove="Contracts\Tournament\**" />
+    <EmbeddedResource Remove="Contracts\UserInterestActivity\**" />
+    <EmbeddedResource Remove="Contracts\Venue\**" />
+    <EmbeddedResource Remove="Response\Activity\**" />
+    <EmbeddedResource Remove="Response\Branch\**" />
+    <EmbeddedResource Remove="Response\BusinessPackage\**" />
+    <EmbeddedResource Remove="Response\CreditCard\**" />
+    <EmbeddedResource Remove="Response\Device\**" />
+    <EmbeddedResource Remove="Response\Event\**" />
+    <EmbeddedResource Remove="Response\Image\**" />
+    <EmbeddedResource Remove="Response\Notification\**" />
+    <EmbeddedResource Remove="Response\Other\**" />
+    <EmbeddedResource Remove="Response\Team\**" />
+    <EmbeddedResource Remove="Response\Tournament\**" />
+    <EmbeddedResource Remove="Response\Venue\**" />
+    <None Remove="Contracts\Activity\**" />
+    <None Remove="Contracts\Branches\**" />
+    <None Remove="Contracts\Event\**" />
+    <None Remove="Contracts\Images\**" />
+    <None Remove="Contracts\NotificationTo\**" />
+    <None Remove="Contracts\Notification\**" />
+    <None Remove="Contracts\Statkeeper\**" />
+    <None Remove="Contracts\Team\**" />
+    <None Remove="Contracts\Tournament\**" />
+    <None Remove="Contracts\UserInterestActivity\**" />
+    <None Remove="Contracts\Venue\**" />
+    <None Remove="Response\Activity\**" />
+    <None Remove="Response\Branch\**" />
+    <None Remove="Response\BusinessPackage\**" />
+    <None Remove="Response\CreditCard\**" />
+    <None Remove="Response\Device\**" />
+    <None Remove="Response\Event\**" />
+    <None Remove="Response\Image\**" />
+    <None Remove="Response\Notification\**" />
+    <None Remove="Response\Other\**" />
+    <None Remove="Response\Team\**" />
+    <None Remove="Response\Tournament\**" />
+    <None Remove="Response\Venue\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Contracts\UserDeviceInfo\IUserDeviceInfoService.cs" />
+    <Compile Remove="Interfaces\IActivityRepository.cs" />
+    <Compile Remove="Interfaces\IBranchesVenuesRepository.cs" />
+    <Compile Remove="Interfaces\IBranchRepository.cs" />
+    <Compile Remove="Interfaces\IBranchSchedulingRepository.cs" />
+    <Compile Remove="Interfaces\IBusinessRepository.cs" />
+    <Compile Remove="Interfaces\IDeviceRepository.cs" />
+    <Compile Remove="Interfaces\IEventCollectionDeviceRepository.cs" />
+    <Compile Remove="Interfaces\IEventCollectionRepository.cs" />
+    <Compile Remove="Interfaces\IEventCollectionTeamRepository.cs" />
+    <Compile Remove="Interfaces\IEventLogRepository.cs" />
+    <Compile Remove="Interfaces\IEventRepository.cs" />
+    <Compile Remove="Interfaces\IEventTeamMemberStatResultRepository.cs" />
+    <Compile Remove="Interfaces\IEventTeamRepository.cs" />
+    <Compile Remove="Interfaces\IFollowRepository.cs" />
+    <Compile Remove="Interfaces\INotificationsRepository.cs" />
+    <Compile Remove="Interfaces\IPlayerInterestActivityRepository.cs" />
+    <Compile Remove="Interfaces\IStatkeeperRepository.cs" />
+    <Compile Remove="Interfaces\IStatRepository.cs" />
+    <Compile Remove="Interfaces\ITeamActivityRepository.cs" />
+    <Compile Remove="Interfaces\ITeamMemberRepository.cs" />
+    <Compile Remove="Interfaces\ITeamMemberRoleRepository.cs" />
+    <Compile Remove="Interfaces\ITeamRepository.cs" />
+    <Compile Remove="Interfaces\ITournamentEventCollectionRepository.cs" />
+    <Compile Remove="Interfaces\ITournamentRepository.cs" />
+    <Compile Remove="Interfaces\ITournamentResultRepository.cs" />
+    <Compile Remove="Interfaces\ITournamentStatkeeperRepository.cs" />
+    <Compile Remove="Interfaces\ITournamentTeamRepository.cs" />
+    <Compile Remove="Interfaces\ITournamentTypeRepository.cs" />
+    <Compile Remove="Interfaces\ITournamentVenueRepository.cs" />
+    <Compile Remove="Interfaces\IUserDeviceInfoRepository.cs" />
+    <Compile Remove="Interfaces\IVenueActivityRepository.cs" />
+    <Compile Remove="Interfaces\IVenueRepository.cs" />
+    <Compile Remove="Interfaces\IVenueStatkeeperRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Response\Other\GenericMessage.cs" />
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Mapster" Version="7.3.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.9">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.9">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+		<PackageReference Include="Serilog.Sinks.Map" Version="1.0.2" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
+	</ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ensuranx.Domain\Ensuranx.Domain.csproj" />
+    <ProjectReference Include="..\Ensuranx.Common\Ensuranx.Common.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Contracts\UserDeviceInfo\" />
+  </ItemGroup>
+
+</Project>

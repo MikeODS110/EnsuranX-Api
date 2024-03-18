@@ -1,0 +1,144 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="JobService\**" />
+	  <Compile Remove="Services\Activity\**" />
+	  <Compile Remove="Services\Branches\**" />
+	  <Compile Remove="Services\Business\**" />
+	  <Compile Remove="Services\CreditCard\**" />
+	  <Compile Remove="Services\Event\**" />
+	  <Compile Remove="Services\Images\**" />
+	  <Compile Remove="Services\NotificationTo\**" />
+	  <Compile Remove="Services\Notification\**" />
+	  <Compile Remove="Services\Statkeeper\**" />
+	  <Compile Remove="Services\Team\**" />
+	  <Compile Remove="Services\Tournament\**" />
+	  <Compile Remove="Services\UserInterestActivity\**" />
+	  <Compile Remove="Services\Venue\**" />
+	  <EmbeddedResource Remove="JobService\**" />
+	  <EmbeddedResource Remove="Services\Activity\**" />
+	  <EmbeddedResource Remove="Services\Branches\**" />
+	  <EmbeddedResource Remove="Services\Business\**" />
+	  <EmbeddedResource Remove="Services\CreditCard\**" />
+	  <EmbeddedResource Remove="Services\Event\**" />
+	  <EmbeddedResource Remove="Services\Images\**" />
+	  <EmbeddedResource Remove="Services\NotificationTo\**" />
+	  <EmbeddedResource Remove="Services\Notification\**" />
+	  <EmbeddedResource Remove="Services\Statkeeper\**" />
+	  <EmbeddedResource Remove="Services\Team\**" />
+	  <EmbeddedResource Remove="Services\Tournament\**" />
+	  <EmbeddedResource Remove="Services\UserInterestActivity\**" />
+	  <EmbeddedResource Remove="Services\Venue\**" />
+	  <None Remove="JobService\**" />
+	  <None Remove="Services\Activity\**" />
+	  <None Remove="Services\Branches\**" />
+	  <None Remove="Services\Business\**" />
+	  <None Remove="Services\CreditCard\**" />
+	  <None Remove="Services\Event\**" />
+	  <None Remove="Services\Images\**" />
+	  <None Remove="Services\NotificationTo\**" />
+	  <None Remove="Services\Notification\**" />
+	  <None Remove="Services\Statkeeper\**" />
+	  <None Remove="Services\Team\**" />
+	  <None Remove="Services\Tournament\**" />
+	  <None Remove="Services\UserInterestActivity\**" />
+	  <None Remove="Services\Venue\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Mappers\BranchesDetailsMapper.cs" />
+	  <Compile Remove="Mappers\BranchSchedulingMapper.cs" />
+	  <Compile Remove="Mappers\BranchVenueList.cs" />
+	  <Compile Remove="Mappers\BusinessMapper.cs" />
+	  <Compile Remove="Mappers\DeviceMapper.cs" />
+	  <Compile Remove="Mappers\EventCollectionDeviceMapper.cs" />
+	  <Compile Remove="Mappers\EventCollectionMapper.cs" />
+	  <Compile Remove="Mappers\EventCollectionTeamMapper.cs" />
+	  <Compile Remove="Mappers\EventMapper.cs" />
+	  <Compile Remove="Mappers\EventTeamMapper.cs" />
+	  <Compile Remove="Mappers\ImageMapper.cs" />
+	  <Compile Remove="Mappers\NotificationMapper.cs" />
+	  <Compile Remove="Mappers\NotificationToMapper.cs" />
+	  <Compile Remove="Mappers\TeamMapper.cs" />
+	  <Compile Remove="Mappers\TournamentEventCollectionMapper.cs" />
+	  <Compile Remove="Mappers\TournamentMapper.cs" />
+	  <Compile Remove="Mappers\TournamentStatkeeperMapper.cs" />
+	  <Compile Remove="Mappers\UserBusinessPackageMapper.cs" />
+	  <Compile Remove="Mappers\UserInterestMapping.cs" />
+	  <Compile Remove="Mappers\VenueActivityMapper.cs" />
+	  <Compile Remove="Mappers\VenueEventList.cs" />
+	  <Compile Remove="Mappers\VenueEventMapper.cs" />
+	  <Compile Remove="Mappers\VenueStatkeeperMapper.cs" />
+	  <Compile Remove="Mappers\WaitingListMapper.cs" />
+	  <Compile Remove="Repositories\ActivityRepository.cs" />
+	  <Compile Remove="Repositories\BranchesVenuesRepository.cs" />
+	  <Compile Remove="Repositories\BranchRepository.cs" />
+	  <Compile Remove="Repositories\BranchSchedulingRepository.cs" />
+	  <Compile Remove="Repositories\BusinessRepository.cs" />
+	  <Compile Remove="Repositories\DeviceRepository.cs" />
+	  <Compile Remove="Repositories\EventCollectionDeviceRepository.cs" />
+	  <Compile Remove="Repositories\EventCollectionRepository.cs" />
+	  <Compile Remove="Repositories\EventCollectionTeamRepository.cs" />
+	  <Compile Remove="Repositories\EventLogRepository.cs" />
+	  <Compile Remove="Repositories\EventRepository.cs" />
+	  <Compile Remove="Repositories\EventTeamMemberStatResultRepository.cs" />
+	  <Compile Remove="Repositories\EventTeamRepository.cs" />
+	  <Compile Remove="Repositories\FollowRepository.cs" />
+	  <Compile Remove="Repositories\NotificationsRepository.cs" />
+	  <Compile Remove="Repositories\PlayerInterestActivityRepository.cs" />
+	  <Compile Remove="Repositories\StatkeeperRepository.cs" />
+	  <Compile Remove="Repositories\StatRepository.cs" />
+	  <Compile Remove="Repositories\TeamActivityRepository.cs" />
+	  <Compile Remove="Repositories\TeamMemberRepository.cs" />
+	  <Compile Remove="Repositories\TeamMemberRoleRepository.cs" />
+	  <Compile Remove="Repositories\TeamRepository.cs" />
+	  <Compile Remove="Repositories\TournamentEventCollectionRepository.cs" />
+	  <Compile Remove="Repositories\TournamentRepository.cs" />
+	  <Compile Remove="Repositories\TournamentResultRepository.cs" />
+	  <Compile Remove="Repositories\TournamentStatkeeperRepository.cs" />
+	  <Compile Remove="Repositories\TournamentTeamRepository.cs" />
+	  <Compile Remove="Repositories\TournamentTypeRepository.cs" />
+	  <Compile Remove="Repositories\TournamentVenueRepository.cs" />
+	  <Compile Remove="Repositories\UserDeviceInfoRepository.cs" />
+	  <Compile Remove="Repositories\VenueActivityRepository.cs" />
+	  <Compile Remove="Repositories\VenueRepository.cs" />
+	  <Compile Remove="Repositories\VenueStatkeeperRepository.cs" />
+	  <Compile Remove="Services\UserDeviceInfo\UserDeviceInfoService.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Contracts\" />
+		<Folder Include="DbModels\" />
+		<Folder Include="Migrations\" />
+		<Folder Include="Services\UserDeviceInfo\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="12.0.1" />
+		<PackageReference Include="ErrorOr" Version="1.2.1" />
+		<PackageReference Include="FirebaseAdmin" Version="2.3.0" />
+		<PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
+		<PackageReference Include="Mapster" Version="7.3.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.9">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
+		<PackageReference Include="Serilog" Version="2.12.0" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+    <ProjectReference Include="..\Ensuranx.Application\Ensuranx.Application.csproj" />
+    <ProjectReference Include="..\Ensuranx.Domain\Ensuranx.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
