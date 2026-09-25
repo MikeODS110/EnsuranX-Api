@@ -4,6 +4,7 @@ using Ensuranx.Infrastructure.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ensuranx.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240419193329_MyRole")]
+    partial class MyRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,7 +73,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasIndex("BusinessTypeId");
 
-                    b.ToTable("Business", (string)null);
+                    b.ToTable("Business");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.BusinessPackageType", b =>
@@ -107,7 +110,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BusinessPackageType", (string)null);
+                    b.ToTable("BusinessPackageType");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.BusinessPackages", b =>
@@ -161,7 +164,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasIndex("BusinessTypeId");
 
-                    b.ToTable("BusinessPackage", (string)null);
+                    b.ToTable("BusinessPackage");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.BusinessType", b =>
@@ -202,7 +205,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BusinessType", (string)null);
+                    b.ToTable("BusinessType");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.Connection", b =>
@@ -258,7 +261,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasIndex("ConnectionTypeId");
 
-                    b.ToTable("Connection", (string)null);
+                    b.ToTable("Connection");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.ConnectionEntity", b =>
@@ -295,7 +298,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ConnectionEntity", (string)null);
+                    b.ToTable("ConnectionEntity");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.ConnectionType", b =>
@@ -336,7 +339,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ConnectionType", (string)null);
+                    b.ToTable("ConnectionType");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.EmailTemplates", b =>
@@ -380,7 +383,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EmailTemplate", (string)null);
+                    b.ToTable("EmailTemplate");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.ImageType", b =>
@@ -417,7 +420,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ImageType", (string)null);
+                    b.ToTable("ImageType");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.Images", b =>
@@ -467,7 +470,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasIndex("ImageTypeId");
 
-                    b.ToTable("Image", (string)null);
+                    b.ToTable("Image");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.NotificationTo", b =>
@@ -529,7 +532,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasIndex("UserInfoId");
 
-                    b.ToTable("NotificationTo", (string)null);
+                    b.ToTable("NotificationTo");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.Notifications", b =>
@@ -574,7 +577,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Notification", (string)null);
+                    b.ToTable("Notification");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.PaymentOption", b =>
@@ -611,7 +614,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentOption", (string)null);
+                    b.ToTable("PaymentOption");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.Permission", b =>
@@ -648,7 +651,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Permission", (string)null);
+                    b.ToTable("Permission");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.PermissionPermissionType", b =>
@@ -691,7 +694,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasIndex("PermissionTypeId");
 
-                    b.ToTable("PermissionPermissionType", (string)null);
+                    b.ToTable("PermissionPermissionType");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.PermissionType", b =>
@@ -728,7 +731,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PermissionType", (string)null);
+                    b.ToTable("PermissionType");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.Provider", b =>
@@ -769,7 +772,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("providers", (string)null);
+                    b.ToTable("providers");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.UserInfo", b =>
@@ -829,7 +832,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserInfo", (string)null);
+                    b.ToTable("UserInfo");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.Entities.UserPermission", b =>
@@ -873,7 +876,7 @@ namespace Ensuranx.Infrastructure.Migrations
 
                     b.HasIndex("UserInfoId");
 
-                    b.ToTable("UserPermission", (string)null);
+                    b.ToTable("UserPermission");
                 });
 
             modelBuilder.Entity("Ensuranx.Domain.IdentityExtensions.AppRole", b =>

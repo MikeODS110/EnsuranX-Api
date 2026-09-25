@@ -103,7 +103,7 @@ var app = builder.Build();
         app.UseSwagger();
         app.UseSwaggerUI();
     }
-
+    app.UseCors("CorsPolicy");
     app.MapControllerRoute(
        name: "Admin",
        pattern: "{area:exists}/{controller=APIHome}/{action=Index}/{id?}");

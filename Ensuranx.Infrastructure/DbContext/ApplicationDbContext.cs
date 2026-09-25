@@ -21,8 +21,6 @@ namespace Ensuranx.Infrastructure.DbContext
                 .Property(e => e.Description)
                 .HasMaxLength(250);
 
-
-
             builder.Entity<AppUser>()
                     .ToTable("User", "dbo");
 
@@ -39,9 +37,19 @@ namespace Ensuranx.Infrastructure.DbContext
 
             builder.Entity<IdentityUserToken<int>>()
                     .ToTable("UserToken", "dbo");
+
+            base.OnModelCreating(builder);
+            SeedRoles(builder);
         }
-
-
+        private void SeedRoles(ModelBuilder builder)
+        {
+            builder.Entity<AppRole>().HasData
+                (
+                new AppRole() { Id = 1, Name = "Admin", ConcurrencyStamp = "1", NormalizedName = "Admin" , Description= "Admin" },
+                new AppRole() { Id = 2, Name = "User", ConcurrencyStamp = "2", NormalizedName = "User" , Description = "User" },
+                new AppRole() { Id = 3, Name = "Guest", ConcurrencyStamp = "3", NormalizedName = "Guest" ,Description = "Guest" }
+                );
+        }
 
         public DbSet<UserInfo> UserInfo { get; set; }
 

@@ -62,7 +62,7 @@ namespace Ensuranx.Api.Controllers
         }
 
         [HttpGet("GetAllProviders")]
-        [Authorize(Roles =("User"))]
+        [Authorize(Roles =("Admin"))]
         public async Task<IActionResult> GetAllProviders()
         {
             try
