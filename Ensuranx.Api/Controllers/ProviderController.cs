@@ -1,4 +1,3 @@
-﻿using Azure;
 using ErrorOr;
 using Ensuranx.Api.Middlewares;
 using System.Net.Http;
@@ -16,7 +15,6 @@ using Ensuranx.Infrastructure.Services.Identity;
 using Ensuranx.Infrastructure.Services.UserInfo;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Azure;
 using ErrorOr;
 using Ensuranx.Api.Middlewares;
 using System.Net.Http;
