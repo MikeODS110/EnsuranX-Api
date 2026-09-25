@@ -98,6 +98,14 @@ var app = builder.Build();
 
 {
     // Configure the HTTP request pipeline.
+    if (builder.Configuration.GetValue<bool>("Diagnostics:ShowErrors"))
+    {
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        app.UseExceptionHandler("/error");
+    }
     if (app.Environment.IsDevelopment())
     {
         app.UseSwagger();
@@ -111,7 +119,6 @@ var app = builder.Build();
         name: "default",
         pattern: "{controller=APIHome}/{action=Index}/{id?}");
 
-    app.UseExceptionHandler("/error");
     app.UseHttpsRedirection();
     app.UseAuthentication();
     app.UseAuthorization();
