@@ -32,7 +32,7 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddSingleton<ProblemDetailsFactory, EnsuranxProblemDetailsFactory>();
     // Set up Connection String with DB Context
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
     builder.Services.AddDefaultIdentity<AppUser>(options => {
         options.SignIn.RequireConfirmedAccount = false;

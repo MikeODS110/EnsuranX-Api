@@ -17,6 +17,7 @@ currently private, and rotate them at the source:
 ## Where the values go now
 
 `appsettings.json` ships with empty placeholders for:
+- `ConnectionStrings:DefaultConnection`
 - `CMSGOV:CountyApiKey`
 - `CMSGOV:MarketplaceApiKey`
 - `JWT:Key`
@@ -28,6 +29,7 @@ Set the real values with one of these, never by editing `appsettings.json` again
 ```bash
 cd Ensuranx.Api
 dotnet user-secrets init
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "<supabase-postgres-connection-string>"
 dotnet user-secrets set "CMSGOV:CountyApiKey" "<new-key>"
 dotnet user-secrets set "CMSGOV:MarketplaceApiKey" "<new-key>"
 dotnet user-secrets set "JWT:Key" "<new-random-secret>"
@@ -43,10 +45,10 @@ variables in this format automatically; no code change needed.
 
 ## Also true right now
 
-- `ConnectionStrings:DefaultConnection` still points at `Data Source=localhost;...` with
-  Windows Integrated Security. That's fine for local dev, but this API has no deployment target
-  yet — once one is chosen (Azure SQL, etc.), the connection string needs to move to config the
-  same way as the secrets above, not get hardcoded for the new environment either.
 - `CMSGOVController.PostHealthInsuranceInfo` previously ignored its `zipCode` parameter and
   always queried a hardcoded ZIP (`27360`); every visitor got North Carolina county results
   regardless of what they typed. Fixed as part of this pass — it now uses the parameter.
+- The database provider was switched from SQL Server to PostgreSQL (Supabase) — see
+  `MIGRATION_NOTES.md` for what that required and what still needs to happen (a fresh EF Core
+  migration, generated with a .NET SDK this change was made without) before the app can actually
+  connect to a database.
