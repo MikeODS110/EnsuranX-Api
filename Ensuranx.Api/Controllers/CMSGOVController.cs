@@ -212,7 +212,7 @@ namespace Ensuranx.Api.Controllers
         }
 
         [HttpGet("SearchPlans")]
-        public async Task<IActionResult> SearchPlans(string zipCode, int year, string market = "Individual", int age = 40, int income = 30000, bool tobacco = false, bool raw = false)
+        public async Task<IActionResult> SearchPlans(string zipCode, int year, string market = "Individual", int age = 40, int income = 30000, bool tobacco = false, string division = "HealthCare", string metalLevel = "", bool raw = false)
         {
             try
             {
@@ -222,6 +222,8 @@ namespace Ensuranx.Api.Controllers
                     return BadRequest("Enter a valid age.");
                 if (market != "Individual" && market != "SHOP")
                     return BadRequest("Unsupported market.");
+                if (division != "HealthCare" && division != "Dental")
+                    return BadRequest("Unsupported plan division.");
 
                 string apiKey = MarketplaceApiKey;
                 if (string.IsNullOrEmpty(apiKey))
@@ -241,74 +243,129 @@ namespace Ensuranx.Api.Controllers
                 string state = (string)county["state"];
                 string countyName = (string)county["name"];
 
-                var person = new JObject
+                async Task<(bool ok, int status, string text)> SearchOnce(JObject filter, int offset)
                 {
-                    ["age"] = age,
-                    ["aptc_eligible"] = true,
-                    ["gender"] = "Female",
-                    ["uses_tobacco"] = tobacco
-                };
-                var body = new JObject
-                {
-                    ["household"] = new JObject
+                    var person = new JObject
                     {
-                        ["income"] = income,
-                        ["people"] = new JArray(person),
-                        ["has_married_couple"] = false
-                    },
-                    ["market"] = market,
-                    ["place"] = new JObject
+                        ["age"] = age,
+                        ["aptc_eligible"] = true,
+                        ["gender"] = "Female",
+                        ["uses_tobacco"] = tobacco
+                    };
+                    var body = new JObject
                     {
-                        ["countyfips"] = fips,
-                        ["state"] = state,
-                        ["zipcode"] = zipCode
-                    },
-                    ["year"] = year,
-                    ["limit"] = 100,
-                    ["offset"] = 0,
-                    ["order"] = "asc",
-                    ["sort"] = "premium"
-                };
+                        ["household"] = new JObject
+                        {
+                            ["income"] = income,
+                            ["people"] = new JArray(person),
+                            ["has_married_couple"] = false
+                        },
+                        ["market"] = market,
+                        ["place"] = new JObject
+                        {
+                            ["countyfips"] = fips,
+                            ["state"] = state,
+                            ["zipcode"] = zipCode
+                        },
+                        ["year"] = year,
+                        ["limit"] = 10,
+                        ["offset"] = offset,
+                        ["order"] = "asc",
+                        ["sort"] = "premium"
+                    };
+                    if (filter != null)
+                        body["filter"] = filter;
 
-                var planResp = await client.PostAsync(
-                    $"https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey={apiKey}&year={year}",
-                    new StringContent(body.ToString(), Encoding.UTF8, "application/json"));
-                var planText = await planResp.Content.ReadAsStringAsync();
-                if (!planResp.IsSuccessStatusCode)
-                {
-                    string snippet = planText.Length > 300 ? planText.Substring(0, 300) : planText;
-                    return StatusCode((int)planResp.StatusCode, snippet.Replace(apiKey, "***"));
+                    var resp = await client.PostAsync(
+                        $"https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey={apiKey}&year={year}",
+                        new StringContent(body.ToString(), Encoding.UTF8, "application/json"));
+                    var text = await resp.Content.ReadAsStringAsync();
+                    return (resp.IsSuccessStatusCode, (int)resp.StatusCode, text);
                 }
 
-                var parsed = JObject.Parse(planText);
-                var plans = parsed["plans"] as JArray ?? new JArray();
+                var searches = new List<Task<(bool ok, int status, string text)>>();
+                if (division == "Dental")
+                {
+                    var dentalFilter = new JObject { ["division"] = "Dental" };
+                    for (int offset = 0; offset < 30; offset += 10)
+                        searches.Add(SearchOnce(dentalFilter, offset));
+                }
+                else if (!string.IsNullOrEmpty(metalLevel))
+                {
+                    searches.Add(SearchOnce(new JObject { ["metal_levels"] = new JArray(metalLevel) }, 0));
+                }
+                else
+                {
+                    var tiers = new List<string> { "Bronze", "Silver", "Gold", "Platinum" };
+                    if (age < 30)
+                        tiers.Add("Catastrophic");
+                    foreach (var tier in tiers)
+                        searches.Add(SearchOnce(new JObject { ["metal_levels"] = new JArray(tier) }, 0));
+                }
+
+                var results = await Task.WhenAll(searches);
+                var okResults = results.Where(r => r.ok).ToList();
+                if (okResults.Count == 0)
+                {
+                    var first = results[0];
+                    string snippet = first.text.Length > 300 ? first.text.Substring(0, 300) : first.text;
+                    return StatusCode(first.status, snippet.Replace(apiKey, "***"));
+                }
+
+                var allPlans = new JArray();
+                int total = 0;
+                JObject firstParsed = null;
+                foreach (var r in okResults)
+                {
+                    var parsed = JObject.Parse(r.text);
+                    if (firstParsed == null)
+                        firstParsed = parsed;
+                    var pagePlans = parsed["plans"] as JArray;
+                    if (pagePlans != null)
+                    {
+                        foreach (var plan in pagePlans)
+                            allPlans.Add(plan);
+                    }
+                    if (division == "Dental")
+                    {
+                        if (total == 0)
+                            total = (int?)parsed["total"] ?? 0;
+                    }
+                    else
+                    {
+                        total += (int?)parsed["total"] ?? 0;
+                    }
+                }
 
                 if (raw)
                 {
-                    var sample = new JArray(plans.Take(3));
                     var rawResult = new JObject
                     {
                         ["county"] = countyName,
                         ["state"] = state,
-                        ["total"] = parsed["total"],
-                        ["topLevelKeys"] = new JArray(parsed.Properties().Select(prop => prop.Name)),
-                        ["sample"] = sample
+                        ["total"] = total,
+                        ["returned"] = allPlans.Count,
+                        ["topLevelKeys"] = new JArray(firstParsed.Properties().Select(prop => prop.Name)),
+                        ["facet_groups"] = firstParsed["facet_groups"],
+                        ["sample"] = new JArray(allPlans.Take(2))
                     };
                     return Content(rawResult.ToString(Formatting.None), "application/json");
                 }
 
                 var compact = new JArray();
-                foreach (var p in plans)
+                foreach (var p in allPlans)
                 {
                     compact.Add(new JObject
                     {
                         ["id"] = p["id"],
                         ["name"] = p["name"],
                         ["issuer"] = p["issuer"]?["name"],
+                        ["issuerUrl"] = p["issuer"]?["individual_url"],
                         ["premium"] = p["premium"],
                         ["premiumWithCredit"] = p["premium_w_credit"],
                         ["metalLevel"] = p["metal_level"],
                         ["type"] = p["type"],
+                        ["division"] = p["product_division"],
                         ["deductibles"] = p["deductibles"],
                         ["moops"] = p["moops"],
                         ["qualityRating"] = p["quality_rating"],
@@ -327,7 +384,8 @@ namespace Ensuranx.Api.Controllers
                     ["zipCode"] = zipCode,
                     ["year"] = year,
                     ["market"] = market,
-                    ["total"] = parsed["total"],
+                    ["division"] = division,
+                    ["total"] = total,
                     ["plans"] = compact
                 };
                 return Content(result.ToString(Formatting.None), "application/json");
